@@ -73,4 +73,4 @@ for (let i = 0; i < numbers.length; i++) {
 
 }
 
-console.log('Sum is ' + sum)
+alert('Sum is ' + sum)
