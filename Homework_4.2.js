@@ -11,34 +11,40 @@ while(valueUSD <= 100) {
 function checkPrimeNum () {
     const userInput = prompt(`Enter prime number`);
 
-if (
-    userInput !== null &&
-    !isNaN(userInput) &&
-    userInput !== '0' &&
-    userInput.trim() !== '' &&
-    Number.isInteger(+userInput)
-    ) {
-    let i = 2;
-    let isPrime = true;
+    if (
+        userInput > 10 &&
+        userInput !== `1` &&
+        userInput !== null &&
+        !isNaN(userInput) &&
+        userInput !== '0' &&
+        userInput.trim() !== '' &&
+        Number.isInteger(+userInput)
+        ) {
+        let i = 2;
+        let isPrime = true;
 
-    while (i <= 10) {
-        if (userInput % i === 0) {
-            alert(`not a prime number`);
-            isPrime = false;
-            break;
+        while (i <= 10) {
+            if (userInput % i === 0) {
+                alert(`not a prime number`);
+                isPrime = false;
+                break;
+            }
+            i++;
         }
-        i++;
-    }
 
-    if (isPrime) {
-        alert(`${userInput} is a prime number`);
+        if (isPrime) {
+            alert(`${userInput} is a prime number`);
+        }
+    } else if (userInput == null) {
+        alert(`As you wish`)
+    }else if(userInput.trim() === `2` || userInput.trim() === `3` || userInput.trim() === `5` || userInput.trim() === `7`){
+        alert(`${userInput.trim()} is a prime number`);
+    } else if (userInput === `1`) {
+        alert(`not a prime number`);
+    } else {
+        alert(`Invalid number`);
+        checkPrimeNum();
     }
-} else if (userInput == null) {
-    alert(`As you wish`)
-}else {
-    alert(`Invalid number`);
-    checkPrimeNum();
-}
 }
 checkPrimeNum();
 
@@ -47,14 +53,16 @@ checkPrimeNum();
 
 
 function checkNum() {
-const userNumber = prompt(`Enter num`);
-let userValue = Math.abs(parseInt(userNumber, 10)).toString().trim(); 
+const userNumber =   prompt(`Enter hole number`);
+let userValue = Number(parseInt(userNumber, 10)).toString().trim(); 
 if (
+    userValue > 0 &&
     userNumber !== null &&
-    !isNaN(userValue) &&
+    !isNaN(userNumber) &&
     userValue.trim() !== `0` &&
-    userValue !== `` &&
-    Number.isInteger(+userValue)
+    userNumber.trim() !== '' &&
+    Number.isInteger(+userNumber) &&
+    !isNaN(userValue)
 ) {
     if (Number.isInteger(+userValue / 3)) {
         while (+userValue % 3 === 0) {
@@ -67,11 +75,16 @@ if (
                 break;
             }
         }
-    } else {
+    }else if(+userValue === 1){
+        alert(`This number CAN be 3^*`);
+    }else{
         alert(`This number CANT be 3^*`);
     }
 } else if(userNumber === null){
     alert(`As you wish`)
+} else if(!Number.isInteger(+userNumber) && !isNaN(userNumber) && userNumber.trim() !== ''){
+    alert(`Not a hole num`)
+    checkNum();
 } else {
     alert(`Invalid number`);
     checkNum();
