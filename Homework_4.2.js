@@ -75,7 +75,7 @@ checkPrimeNum();
 
 
 function checkNum() {
-const userNumber =   prompt(`Enter hole number positive number`);
+const userNumber =   prompt(`Enter hole positive number`);
 let userValue = Number(parseInt(userNumber, 10)).toString().trim(); 
 if (
     userValue > 0 &&
